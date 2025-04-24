@@ -4,7 +4,7 @@ import lv4andlv5.food.Food;
 import lv4andlv5.item.DrinkItem;
 import lv4andlv5.item.MainItem;
 import lv4andlv5.item.SideItem;
-import lv4andlv5.manager.Menu;
+import lv4andlv5.manager.MenuManager;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -24,8 +24,8 @@ public class MainLv5 {
         items.add(new SideItem(2, "Cheese Ball", 3.5, "치즈볼"));
         items.add(new SideItem(3, "Large Potato", 3.5, "감자튀김 라지"));
 
-        Menu menu = new Menu(items);
-        Kiosk kiosk = new Kiosk(menu);
+        MenuManager menuManager = new MenuManager(items);
+        Kiosk kiosk = new Kiosk(menuManager);
         kiosk.start();
     }
 }

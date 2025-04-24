@@ -1,22 +1,24 @@
 package lv4andlv5;
 
-import lv4andlv5.manager.Menu;
+import lv4andlv5.manager.MenuManager;
 
 import java.util.*;
 
+/**
+ * 키오스크 입출력 클래스
+ */
 public class Kiosk {
-    private final Menu menu;
-    Kiosk(Menu menu) {
-        this.menu = menu;
+    private final MenuManager menuManager;
+    Kiosk(MenuManager menuManager) {
+        this.menuManager = menuManager;
     }
-
     /**
      * 키오스크 시작
      */
     public void start() {
         Scanner sc = new Scanner(System.in);
         while (true) {
-            menu.printCategory();
+            menuManager.printCategory();
             int categoryIndex = categoryMenu(sc);
             if(categoryIndex == -1) break;
             foodMenu(sc, categoryIndex);
@@ -38,10 +40,10 @@ public class Kiosk {
             if(index == -1){
                 System.out.println("프로그램을 종료합니다");
                 return -1;
-            }else if(index >= menu.getFoodsSize() || index < -1){
+            }else if(index >= menuManager.getFoodsSize() || index < -1){
                 throw new InputMismatchException();
             }else{
-                menu.printMenu(index);
+                menuManager.printMenu(index);
             }
         }catch (InputMismatchException e){
             System.out.println("잘못된 입력입니다.");
@@ -66,10 +68,10 @@ public class Kiosk {
             int index = Integer.parseInt(input) - 1;
             if (index == -1) {
                 System.out.println("이전화면으로 돌아갑니다.");
-            } else if (index >= menu.getFoodsSize() || index < -1) {
+            } else if (index >= menuManager.getFoodsSize() || index < -1) {
                 throw new InputMismatchException();
             } else {
-                menu.printSelect(index, categoryIndex);
+                menuManager.printSelect(index, categoryIndex);
             }
         } catch (InputMismatchException e) {
             System.out.println("잘못된 입력입니다. 다시 입력해주세요.");
