@@ -14,5 +14,4 @@ public class SideItem extends FoodCommon {
     public String getCategory(){
         return "2. Side";
     }
-
 }

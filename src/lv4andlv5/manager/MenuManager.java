@@ -16,6 +16,7 @@ public class MenuManager {
      * @param items 음식리스트
      */
     public MenuManager(List<Food> items) {
+
         foodMap = new HashMap<>();
         categoryMap = new HashMap<>();
         for(Food item : items){
@@ -58,15 +59,20 @@ public class MenuManager {
     }
 
     /**
-     * 선택한 메뉴 출력
+     * 선택한 메뉴 출력 -> 카트에 담긴 메뉴로 변경하기
      */
-    public void printSelect(int index, int categoryIndex) {
-        System.out.print("선택한 메뉴 : ");
+    public Food printSelect(int index, int categoryIndex) {
+
+        String category = "";
+        for(String str : categoryMap.keySet()){
+            if(categoryMap.get(str).equals(categoryIndex)) category = str;
+        }
         for(Food food : foodMap.keySet()){
-            if(foodMap.get(food) == categoryIndex){
-                if(food.getIndex() == index) food.printMenu();
+            if(food.getCategory().equals(category) && food.getIndex() == index){
+                return food;
             }
         }
-        System.out.println("---------------------------------------------------------");
+
+        return null;
     }
 }
