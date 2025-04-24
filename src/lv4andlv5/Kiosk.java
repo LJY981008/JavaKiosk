@@ -1,5 +1,6 @@
 package lv4andlv5;
 
+import lv4andlv5.enums.Discount;
 import lv4andlv5.food.Food;
 import lv4andlv5.manager.CartManager;
 import lv4andlv5.manager.MenuManager;
@@ -121,7 +122,8 @@ public class Kiosk {
         System.out.println("1. 주문\t2. 메뉴판");
         boolean flag = sc.nextLine().equals("1");
         if(flag){
-            System.out.println("주문이 완료되었습니다. 금액은 W " + cartManager.getTotalPrice() + " 입니다.");
+            double totalPrice = discount(sc);
+            System.out.println("주문이 완료되었습니다. 금액은 W " + String.format("%.2f", totalPrice) + " 입니다.");
             cartManager.payment();
         }else{
             System.out.println("메뉴판으로 돌아갑니다.");
@@ -142,5 +144,42 @@ public class Kiosk {
             System.out.println("잘못입력하셨습니다.");
         }
         return -2;
+    }
+    public double discount(Scanner sc){
+        System.out.println("할인 정보를 입력해주세요.");
+        System.out.println(
+                "1. 국가유공자\t: 10% \n" +
+                "2. 군인\t:  5%\n" +
+                "3. 학생\t:  3%\n" +
+                "4. 일반\t:  0%"
+        );
+        double discountTotal = 0;
+        try {
+            int input = Integer.parseInt(sc.nextLine());
+
+            switch (input){
+                case 1:{
+                    discountTotal = Discount.NATIONAL.getDiscount(cartManager.getTotalPrice());
+                    break;
+                }
+                case 2:{
+                    discountTotal = Discount.SOLDIER.getDiscount(cartManager.getTotalPrice());
+                    break;
+                }
+                case 3:{
+                    discountTotal = Discount.STUDENT.getDiscount(cartManager.getTotalPrice());
+                    break;
+                }
+                default:{
+                    discountTotal = Discount.NORMAL.getDiscount(cartManager.getTotalPrice());
+                }
+
+            }
+        }catch (NumberFormatException e){
+            System.out.println("잘못입력하셨습니다.");
+            System.out.println("할인이 적용되지않고 진행됩니다.");
+            discountTotal = Discount.NORMAL.getDiscount(cartManager.getTotalPrice());
+        }
+        return discountTotal;
     }
 }

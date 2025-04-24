@@ -5,6 +5,7 @@ import lv4andlv5.food.Food;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Optional;
 
 public class CartManager {
     private Map<Food, Integer> myCart;
@@ -29,16 +30,12 @@ public class CartManager {
     }
     public void removeFood(int index){
         System.out.println("---------------------------------------------------------");
-        for(Food food : myCart.keySet()){
-            if(food.getCartIndex() == index) {
-                if(myCart.get(food) != null){
-                    myCart.computeIfPresent(food, (key, value) -> value - 1);
-                    totalPrice -= Double.parseDouble(food.getPrice());
-                    System.out.println(food.getName() + "이 장바구니에서 제외되었습니다.");
-                }
-                if(myCart.get(food) <= 0) myCart.remove(food);
-            }
-        }
+        Food[] foods = myCart.keySet().toArray(new Food[0]);
+        Optional<Food> food = Arrays.stream(foods).filter(temp -> temp.getCartIndex() == index).findFirst();
+        myCart.computeIfPresent(food.get(), (key, value) -> value - 1);
+        totalPrice -= Double.parseDouble(food.get().getPrice());
+        System.out.println(food.get().getName() + "이 장바구니에서 제외되었습니다.");
+        if(myCart.get(food.get()) <= 0) myCart.remove(food.get());
         System.out.println("---------------------------------------------------------");
     }
     public void payment(){
