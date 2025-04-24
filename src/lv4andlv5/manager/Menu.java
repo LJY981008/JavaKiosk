@@ -1,46 +1,73 @@
 package lv4andlv5.manager;
 
 import lv4andlv5.food.Food;
-
 import java.util.*;
 
+/**
+ * 메뉴관리자
+ */
 public class Menu {
-    private List<Food> foodList;
-    private Map<String, Integer> categoris;
+    private final Map<Food, Integer> foodMap;
+    private final Map<String, Integer> categoryMap;
 
+    /**
+     * 생성자
+     * 카테고리와 음식을 map을 통해 관리
+     * @param items 음식리스트
+     */
     public Menu(List<Food> items) {
-        this.foodList = items;
-        categoris = new HashMap<>();
+        foodMap = new HashMap<>();
+        categoryMap = new HashMap<>();
         for(Food item : items){
-            categoris.put(item.getCategori(), categoris.getOrDefault(item.getCategori(), 0) + 1);
+            int categoryIndex = Character.getNumericValue(item.getCategory().charAt(0)) -1;
+            foodMap.put(item, categoryIndex);
+            categoryMap.put(item.getCategory(), categoryIndex);
         }
     }
 
-    public int getCategoriSize(){
-        return categoris.size();
-    }
-    public int getFoodListSize() {
-        return foodList.size();
+    /**
+     * @return 음식 전체 개수
+     */
+    public int getFoodsSize() {
+        return foodMap.size();
     }
 
-    public String[] categoriToArray(){
-        String[] array = categoris.keySet().toArray(new String[0]);
-        Arrays.sort(array, new Comparator<String>() {
-            @Override
-            public int compare(String o1, String o2) {
-                char c1 = o1.charAt(0);
-                char c2 = o2.charAt(0);
-                return c1 - c2;
-            }
+    /**
+     * index 순으로 카테고리 정렬
+     * @return 정렬된 배열
+     */
+    public String[] categoryToArraySort(){
+        String[] array = categoryMap.keySet().toArray(new String[0]);
+        Arrays.sort(array, (o1, o2) -> {
+            int value1 = categoryMap.get(o1);
+            int value2 = categoryMap.get(o2);
+            return value1 - value2;
         });
         return array;
     }
 
-    public void printCategori(){
-        String[] categoriArr = categoriToArray();
+    /**
+     * 선택된 카테고리의 음식을 index 순으로 정렬
+     * @return 정렬된 배열
+     */
+    public Food[] foodsToArraySort(){
+        Food[] foods = foodMap.keySet().toArray(new Food[0]);
+        Arrays.sort(foods, (o1, o2) ->{
+            int value1 = o1.getIndex();
+            int value2 = o2.getIndex();
+            return value1 - value2;
+        });
+        return foods;
+    }
+
+    /**
+     * 전체 카테고리 출력
+     */
+    public void printCategory(){
+        String[] categoryArr = categoryToArraySort();
         System.out.println("[ Main Menu ]");
-        for(String categori : categoriArr){
-            System.out.println(categori);
+        for(String category : categoryArr){
+            System.out.println(category);
         }
         System.out.println("0. 종료");
     }
@@ -48,10 +75,10 @@ public class Menu {
     /**
      * 전체 메뉴 출력
      */
-    public void printMenu(int index) {
-        String[] categoriArr = categoriToArray();
-        for (Food food : foodList) {
-            if(food.getCategori().equals(categoriArr[index])){
+    public void printMenu(int categoryIndex) {
+        Food[] foods = foodsToArraySort();
+        for (Food food : foods) {
+            if(foodMap.get(food) == categoryIndex){
                 food.printMenu();
             }
         }
@@ -61,9 +88,13 @@ public class Menu {
     /**
      * 선택한 메뉴 출력
      */
-    public void printSelect(int index) {
+    public void printSelect(int index, int categoryIndex) {
         System.out.print("선택한 메뉴 : ");
-        foodList.get(index).printMenu();
+        for(Food food : foodMap.keySet()){
+            if(foodMap.get(food) == categoryIndex){
+                if(food.getIndex() == index) food.printMenu();
+            }
+        }
         System.out.println("---------------------------------------------------------");
     }
 }

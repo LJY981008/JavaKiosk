@@ -9,7 +9,7 @@ import lv4andlv5.manager.Menu;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MainLv4 {
+public class MainLv5 {
     public static void main(String[] args) {
         List<Food> items = new ArrayList<>();
         items.add(new MainItem(1,"ShackBurger", 6.9, "토마토, 양상추, 쉑소스가 토핑된 치즈버거"));

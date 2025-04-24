@@ -1,14 +1,18 @@
 package lv4andlv5.item;
 
-import lv4andlv5.food.Desert;
+import lv4andlv5.food.FoodCommon;
 
-public class SideItem extends Desert {
+/**
+ * 사이드 메뉴 데이터
+ */
+public class SideItem extends FoodCommon {
     public SideItem(int index, String name, double price, String information) {
         super(index, name, price, information);
     }
+    // 내 카테고리 반환
     @Override
-    public void printMenu() {
-        System.out.println(getIndex() + ". " + getName() + "\t| W " + getPrice() + "\t | " + getInformation());
+    public String getCategory(){
+        return "2. Side";
     }
 
 }
