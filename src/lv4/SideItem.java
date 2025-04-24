@@ -1,6 +1,6 @@
 package lv4;
 
-public class SideItem implements Menu{
+public class SideItem implements Food {
     private int index;
     private String name;
     private String price;

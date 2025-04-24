@@ -1,6 +1,6 @@
 package lv4;
 
-public class MainItem implements Menu{
+public class MainItem implements Food {
     private int index;
     private String name;
     private String price;

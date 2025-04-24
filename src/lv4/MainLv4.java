@@ -5,7 +5,7 @@ import java.util.List;
 
 public class MainLv4 {
     public static void main(String[] args) {
-        List<Menu> items = new ArrayList<>();
+        List<Food> items = new ArrayList<>();
         items.add(new MainItem(1,"ShackBurger", 6.9, "토마토, 양상추, 쉑소스가 토핑된 치즈버거"));
         items.add(new MainItem(2,"SmokeShack", 8.9, "토마토, 양상추, 쉑소스가 토핑된 치즈버거"));
         items.add(new MainItem(3,"Cheeseburger", 6.9, "토마토, 양상추, 쉑소스가 토핑된 치즈버거"));
@@ -14,8 +14,8 @@ public class MainLv4 {
         items.add(new SideItem(6,"Coke", 2.0, "코카콜라"));
 
 
-
-        Kiosk kiosk = new Kiosk(items);
+        Menu menu = new Menu(items);
+        Kiosk kiosk = new Kiosk(menu);
         kiosk.start();
     }
 }
