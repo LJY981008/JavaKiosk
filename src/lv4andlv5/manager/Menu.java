@@ -1,4 +1,6 @@
-package lv4andlv5;
+package lv4andlv5.manager;
+
+import lv4andlv5.food.Food;
 
 import java.util.*;
 
@@ -6,7 +8,7 @@ public class Menu {
     private List<Food> foodList;
     private Map<String, Integer> categoris;
 
-    Menu(List<Food> items) {
+    public Menu(List<Food> items) {
         this.foodList = items;
         categoris = new HashMap<>();
         for(Food item : items){

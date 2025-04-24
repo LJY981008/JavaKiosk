@@ -1,5 +1,7 @@
 package lv4andlv5;
 
+import lv4andlv5.manager.Menu;
+
 import java.util.*;
 
 public class Kiosk {

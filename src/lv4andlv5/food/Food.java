@@ -1,4 +1,4 @@
-package lv4andlv5;
+package lv4andlv5.food;
 
 public interface Food {
     void printMenu();

@@ -1,5 +1,11 @@
 package lv4andlv5;
 
+import lv4andlv5.food.Food;
+import lv4andlv5.item.DrinkItem;
+import lv4andlv5.item.MainItem;
+import lv4andlv5.item.SideItem;
+import lv4andlv5.manager.Menu;
+
 import java.util.ArrayList;
 import java.util.List;
 

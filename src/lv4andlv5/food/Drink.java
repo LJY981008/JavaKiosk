@@ -1,12 +1,12 @@
-package lv4andlv5;
+package lv4andlv5.food;
 
-abstract public class Desert implements Food{
+abstract public class Drink implements Food {
     private int index;
     private String name;
     private String price;
     private String information;
-    private String categori = "3. Desert";
-    Desert(int index, String name, double price, String information){
+    private String categori = "2. Drink";
+    public Drink(int index, String name, double price, String information){
         this.index = index;
         this.name = name;
         this.price = String.valueOf(price);
