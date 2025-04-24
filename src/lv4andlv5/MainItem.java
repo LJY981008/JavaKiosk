@@ -1,4 +1,4 @@
-package lv4;
+package lv4andlv5;
 
 public class MainItem extends Burger {
 
