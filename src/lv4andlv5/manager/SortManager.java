@@ -36,4 +36,14 @@ public class SortManager {
         });
         return foods;
     }
+
+    public static Food[] cartToArraySort(Map<Food, Integer> map){
+        Food[] foods = map.keySet().toArray(new Food[0]);
+        Arrays.sort(foods, ((o1, o2) -> {
+            int value1 = o1.getCartIndex();
+            int value2 = o2.getCartIndex();
+            return value1 - value2;
+        }));
+        return foods;
+    }
 }

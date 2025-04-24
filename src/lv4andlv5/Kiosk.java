@@ -33,11 +33,10 @@ public class Kiosk {
             int categoryIndex = categoryMenu(sc);
             if (categoryIndex == -1) {
                 break;
+            }else if(categoryIndex != -2){
+                foodMenu(sc, categoryIndex);
             }
-            foodMenu(sc, categoryIndex);
-
         }
-
         System.out.println("프로그램을 종료합니다.");
         sc.close();
     }
@@ -53,14 +52,16 @@ public class Kiosk {
             String input = sc.nextLine();
             index = Integer.parseInt(input) - 1;
             if (index == -1) {
-                System.out.println("프로그램을 종료합니다");
                 return -1;
             } else if (index == 3) {
+                if(cartManager.isEmpty()){
+                    System.out.println("!!!!장바구니에 담긴 음식이 없습니다.!!!!");
+                    return -2;
+                }
                 System.out.println("아래와 같이 주문하시겠습니까?");
-                order(sc);
-                return -1;
+                return order(sc) ? -1 : -2;
             } else if (index == 4) {
-
+                return cancel(sc);
             } else if (index >= menuManager.getFoodsSize() || index < -1) {
                 throw new InputMismatchException();
             } else {
@@ -111,7 +112,8 @@ public class Kiosk {
         }
     }
 
-    public void order(Scanner sc){
+    public boolean order(Scanner sc){
+        if(cartManager.isEmpty()) return false;
         System.out.println("[ Orders ]");
         cartManager.printCart();
         System.out.println("[ Total ]");
@@ -123,6 +125,22 @@ public class Kiosk {
             cartManager.payment();
         }else{
             System.out.println("메뉴판으로 돌아갑니다.");
+            return false;
         }
+        return true;
+    }
+
+    public int cancel(Scanner sc){
+        System.out.println("취소하실 음식을 선택해주세요");
+        System.out.println("[ Orders ]");
+        cartManager.printCart();
+        System.out.println("0. 돌아가기");
+        String input = sc.nextLine();
+        try {
+            if(!input.equals("0")) cartManager.removeFood(Integer.parseInt(input));
+        }catch (NumberFormatException e){
+            System.out.println("잘못입력하셨습니다.");
+        }
+        return -2;
     }
 }

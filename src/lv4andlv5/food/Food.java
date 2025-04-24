@@ -6,6 +6,8 @@ package lv4andlv5.food;
 public interface Food {
     void printMenu(int count);
     void printMenu();
+    void setCartIndex(int index);
+    int getCartIndex();
     int getIndex();
     String getName();
     String getPrice();
