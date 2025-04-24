@@ -25,7 +25,6 @@ public class MainLv5 {
         items.add(new SideItem(2, "Cheese Ball", 3.5, "치즈볼"));
         items.add(new SideItem(3, "Large Potato", 3.5, "감자튀김 라지"));
 
-
         CartManager cartManager = new CartManager();
         MenuManager menuManager = new MenuManager(items);
         Kiosk kiosk = new Kiosk(menuManager, cartManager);

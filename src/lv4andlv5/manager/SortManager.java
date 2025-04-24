@@ -37,6 +37,11 @@ public class SortManager {
         return foods;
     }
 
+    /**
+     * 장바구니 내용 정렬
+     * @param map 장바구니
+     * @return 정렬된 배열
+     */
     public static Food[] cartToArraySort(Map<Food, Integer> map){
         Food[] foods = map.keySet().toArray(new Food[0]);
         Arrays.sort(foods, ((o1, o2) -> {

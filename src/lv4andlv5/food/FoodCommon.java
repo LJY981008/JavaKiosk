@@ -8,7 +8,7 @@ public abstract class FoodCommon implements Food{
     private final String name;
     private final String price;
     private final String information;
-
+    private int cartIndex;
     public FoodCommon(int index, String name, double price, String information){
         this.index = index;
         this.name = name;
@@ -44,5 +44,15 @@ public abstract class FoodCommon implements Food{
     @Override
     public void printMenu(){
         System.out.println(getIndex() + ". " + getName() + "\t| W " + getPrice() + "\t | " + getInformation());
+    }
+    // 장바구니의서의 index 반환
+    @Override
+    public int getCartIndex() {
+        return cartIndex;
+    }
+    // 장바구니의서의 index 반환
+    @Override
+    public void setCartIndex(int index) {
+        cartIndex = index;
     }
 }

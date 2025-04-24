@@ -62,7 +62,6 @@ public class MenuManager {
      * 선택한 메뉴 출력 -> 카트에 담긴 메뉴로 변경하기
      */
     public Food printSelect(int index, int categoryIndex) {
-
         String category = "";
         for(String str : categoryMap.keySet()){
             if(categoryMap.get(str).equals(categoryIndex)) category = str;
@@ -72,7 +71,6 @@ public class MenuManager {
                 return food;
             }
         }
-
         return null;
     }
 }

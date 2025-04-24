@@ -113,6 +113,11 @@ public class Kiosk {
         }
     }
 
+    /**
+     * 주문하기
+     * @param sc 스캐너
+     * @return true = 주문, false = 메뉴판
+     */
     public boolean order(Scanner sc){
         if(cartManager.isEmpty()) return false;
         System.out.println("[ Orders ]");
@@ -132,6 +137,11 @@ public class Kiosk {
         return true;
     }
 
+    /**
+     * 주문취소
+     * @param sc 스캐너
+     * @return -2 = 키오스크의 처음으로
+     */
     public int cancel(Scanner sc){
         System.out.println("취소하실 음식을 선택해주세요");
         System.out.println("[ Orders ]");
@@ -145,6 +155,12 @@ public class Kiosk {
         }
         return -2;
     }
+
+    /**
+     * 할인율 적용
+     * @param sc 스캐너
+     * @return 할인적용 후의 가격
+     */
     public double discount(Scanner sc){
         System.out.println("할인 정보를 입력해주세요.");
         System.out.println(

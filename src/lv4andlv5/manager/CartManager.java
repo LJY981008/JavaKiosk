@@ -7,6 +7,9 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Optional;
 
+/**
+ * 장바구니 관리자
+ */
 public class CartManager {
     private Map<Food, Integer> myCart;
     private Map<Integer, Food> indexCart;
@@ -16,6 +19,11 @@ public class CartManager {
         myCart = new HashMap<>();
         indexCart = new HashMap<>();
     }
+
+    /**
+     * 주문 품목 추가
+     * @param selectFood 주문한 음식의 데이터
+     */
     public void addFood(Food selectFood){
         System.out.println("---------------------------------------------------------");
         if(!myCart.containsKey(selectFood)){
@@ -28,6 +36,11 @@ public class CartManager {
         System.out.println(selectFood.getName() + "이 장바구니에 추가되었습니다.");
         System.out.println("---------------------------------------------------------");
     }
+
+    /**
+     * 선택된 항목 삭제
+     * @param index 선택한 항목의 index
+     */
     public void removeFood(int index){
         System.out.println("---------------------------------------------------------");
         Food[] foods = myCart.keySet().toArray(new Food[0]);
@@ -38,13 +51,26 @@ public class CartManager {
         if(myCart.get(food.get()) <= 0) myCart.remove(food.get());
         System.out.println("---------------------------------------------------------");
     }
+
+    /**
+     * 주문완료하면 초기화
+     */
     public void payment(){
         totalPrice = 0;
         myCart.clear();
     }
+
+    /**
+     * 장바구니가 비었는지 확인
+     * @return true = 비어있음, false = 비어있지않음
+     */
     public boolean isEmpty(){
         return myCart.isEmpty();
     }
+
+    /**
+     * 장바구니 전체 + 전체가격 출력
+     */
     public void printCart(){
         if(myCart.isEmpty()) return;
         System.out.println("---------------------------------------------------------");
@@ -56,6 +82,11 @@ public class CartManager {
         System.out.println("총 합 : W" + totalPrice);
         System.out.println("---------------------------------------------------------");
     }
+
+    /**
+     * 장바구니 전체 가격 반환
+     * @return 전체 가격
+     */
     public double getTotalPrice(){
         return totalPrice;
     }
