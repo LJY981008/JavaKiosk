@@ -23,12 +23,19 @@ public class Kiosk {
      */
     public void start() {
         Scanner sc = new Scanner(System.in);
-
         while (true) {
             menuManager.printCategory();
+
+            System.out.println("[ ORDER MENU ]");
+            System.out.println("4. Orders\t| 장바구니를 확인 후 주문합니다.");
+            System.out.println("5. Cancel\t| 진행중인 주문을 취소합니다.");
+
             int categoryIndex = categoryMenu(sc);
-            if (categoryIndex == -1) break;
+            if (categoryIndex == -1) {
+                break;
+            }
             foodMenu(sc, categoryIndex);
+
         }
 
         System.out.println("프로그램을 종료합니다.");
@@ -49,7 +56,9 @@ public class Kiosk {
                 System.out.println("프로그램을 종료합니다");
                 return -1;
             } else if (index == 3) {
-
+                System.out.println("아래와 같이 주문하시겠습니까?");
+                order(sc);
+                return -1;
             } else if (index == 4) {
 
             } else if (index >= menuManager.getFoodsSize() || index < -1) {
@@ -99,6 +108,21 @@ public class Kiosk {
             System.out.println("잘못된 입력입니다. 다시 입력해주세요.");
         } catch (Exception e) {
             System.out.println("알수없는 오류 발생");
+        }
+    }
+
+    public void order(Scanner sc){
+        System.out.println("[ Orders ]");
+        cartManager.printCart();
+        System.out.println("[ Total ]");
+        System.out.println("W " + cartManager.getTotalPrice());
+        System.out.println("1. 주문\t2. 메뉴판");
+        boolean flag = sc.nextLine().equals("1");
+        if(flag){
+            System.out.println("주문이 완료되었습니다. 금액은 W " + cartManager.getTotalPrice() + " 입니다.");
+            cartManager.payment();
+        }else{
+            System.out.println("메뉴판으로 돌아갑니다.");
         }
     }
 }
