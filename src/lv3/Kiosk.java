@@ -32,7 +32,7 @@ public class Kiosk {
     /**
      * 전체 메뉴 출력
      */
-    public void printMenu(s){
+    public void printMenu(){
         for(int i = 0; i < menuItems.size(); i++){
             String[] menuItem = menuItems.get(i).getMenu();    // index = 0 메뉴이름, 1 가격, 2 설명
             System.out.println(i+1 + ". " + menuItem[0] + "\t| W " +  menuItem[1] + "\t | " + menuItem[2]);
