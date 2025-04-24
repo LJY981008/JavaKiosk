@@ -1,10 +1,9 @@
 package lv4;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class Menu {
-    List<Food> foodList = new ArrayList<>();
+    private List<Food> foodList;
 
     Menu(List<Food> items) {
         this.foodList = items;
