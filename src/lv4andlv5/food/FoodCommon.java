@@ -37,12 +37,12 @@ public abstract class FoodCommon implements Food{
     }
     // 내 정보 출력(개수포함)
     @Override
-    public void printMenu(int count) {
+    public void printMyInfo(int count) {
         System.out.println(getName() + "\t| W " + (Double.parseDouble(getPrice()) * count) + "\t | " + getInformation() + " * " + count);
     }
     // 내 정보 출력
     @Override
-    public void printMenu(){
+    public void printMyInfo(){
         System.out.println(getIndex() + ". " + getName() + "\t| W " + getPrice() + "\t | " + getInformation());
     }
     // 장바구니의서의 index 반환

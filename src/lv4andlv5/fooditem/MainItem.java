@@ -1,9 +1,9 @@
-package lv4andlv5.item;
+package lv4andlv5.fooditem;
 
 import lv4andlv5.food.FoodCommon;
 
 /**
- * 메인 메뉴 데이터
+ * 메인음식 메뉴 데이터
  */
 public class MainItem extends FoodCommon {
     public MainItem(int index, String name, double price, String information) {

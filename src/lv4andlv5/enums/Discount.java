@@ -1,5 +1,8 @@
 package lv4andlv5.enums;
 
+/**
+ * 할인율 관리자
+ */
 public enum Discount {
     NATIONAL {
         @Override
@@ -22,5 +25,6 @@ public enum Discount {
             return totalPayment;
         }
     };
+    // 각각 할인율의 연산 메서드
     public abstract double getDiscount(double totalPayment);
 }

@@ -1,4 +1,4 @@
-package lv4andlv5.item;
+package lv4andlv5.fooditem;
 
 import lv4andlv5.food.FoodCommon;
 

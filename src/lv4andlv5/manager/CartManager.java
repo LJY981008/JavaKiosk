@@ -11,17 +11,15 @@ import java.util.Optional;
  * 장바구니 관리자
  */
 public class CartManager {
-    private Map<Food, Integer> myCart;
-    private Map<Integer, Food> indexCart;
+    private final Map<Food, Integer> myCart;
     private double totalPrice = 0.0;
     private int index = 1;
     public CartManager(){
         myCart = new HashMap<>();
-        indexCart = new HashMap<>();
     }
 
     /**
-     * 주문 품목 추가
+     * 장바구니 품목 추가
      * @param selectFood 주문한 음식의 데이터
      */
     public void addFood(Food selectFood){
@@ -38,26 +36,25 @@ public class CartManager {
     }
 
     /**
-     * 선택된 항목 삭제
+     * 장바구니 선택된 항목 삭제
      * @param index 선택한 항목의 index
      */
     public void removeFood(int index){
         System.out.println("---------------------------------------------------------");
         Food[] foods = myCart.keySet().toArray(new Food[0]);
         Optional<Food> food = Arrays.stream(foods).filter(temp -> temp.getCartIndex() == index).findFirst();
+
         myCart.computeIfPresent(food.get(), (key, value) -> value - 1);
         totalPrice -= Double.parseDouble(food.get().getPrice());
         System.out.println(food.get().getName() + "이 장바구니에서 제외되었습니다.");
         if(myCart.get(food.get()) <= 0) myCart.remove(food.get());
-        System.out.println("---------------------------------------------------------");
-    }
 
-    /**
-     * 주문완료하면 초기화
-     */
-    public void payment(){
-        totalPrice = 0;
-        myCart.clear();
+        //음식이 삭제되면 index 재배치
+        this.index = 1;
+        for(Food key : myCart.keySet()){
+            key.setCartIndex(this.index++);
+        }
+        System.out.println("---------------------------------------------------------");
     }
 
     /**
@@ -77,10 +74,18 @@ public class CartManager {
         Food[] foods = SortManager.cartToArraySort(myCart);
         for(Food food : foods){
             System.out.print(food.getCartIndex() + ". ");
-            food.printMenu(myCart.get(food));
+            food.printMyInfo(myCart.get(food));
         }
         System.out.println("총 합 : W" + totalPrice);
         System.out.println("---------------------------------------------------------");
+    }
+
+    /**
+     * 장바구니 초기화
+     */
+    public void resetCart(){
+        myCart.clear();
+        totalPrice = 0;
     }
 
     /**
