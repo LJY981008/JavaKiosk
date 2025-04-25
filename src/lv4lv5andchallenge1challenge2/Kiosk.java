@@ -11,7 +11,7 @@ public class Kiosk {
     private final FoodManager foodManager;
     private final CartManager cartManager;
 
-    Kiosk(FoodManager foodManager, CartManager cartManager) {
+    public Kiosk(FoodManager foodManager, CartManager cartManager) {
         this.foodManager = foodManager;
         this.cartManager = cartManager;
     }
