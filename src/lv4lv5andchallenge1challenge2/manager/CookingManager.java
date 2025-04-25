@@ -1,9 +1,9 @@
-package lv4andlv5.manager;
+package lv4lv5andchallenge1challenge2.manager;
 
-import lv4andlv5.food.Food;
-import lv4andlv5.fooditem.DrinkItem;
-import lv4andlv5.fooditem.MainItem;
-import lv4andlv5.fooditem.SideItem;
+import lv4lv5andchallenge1challenge2.food.Food;
+import lv4lv5andchallenge1challenge2.fooditem.DrinkItem;
+import lv4lv5andchallenge1challenge2.fooditem.MainItem;
+import lv4lv5andchallenge1challenge2.fooditem.SideItem;
 
 import java.util.ArrayList;
 import java.util.List;

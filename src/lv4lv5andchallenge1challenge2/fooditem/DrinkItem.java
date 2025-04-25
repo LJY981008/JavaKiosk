@@ -1,6 +1,6 @@
-package lv4andlv5.fooditem;
+package lv4lv5andchallenge1challenge2.fooditem;
 
-import lv4andlv5.food.FoodCommon;
+import lv4lv5andchallenge1challenge2.food.FoodCommon;
 
 /**
  * 음료수 메뉴 데이터

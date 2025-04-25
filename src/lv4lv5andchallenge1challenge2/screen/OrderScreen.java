@@ -1,7 +1,7 @@
-package lv4andlv5.screen;
+package lv4lv5andchallenge1challenge2.screen;
 
-import lv4andlv5.enums.Discount;
-import lv4andlv5.manager.CartManager;
+import lv4lv5andchallenge1challenge2.enums.Discount;
+import lv4lv5andchallenge1challenge2.manager.CartManager;
 import java.util.Scanner;
 
 /**

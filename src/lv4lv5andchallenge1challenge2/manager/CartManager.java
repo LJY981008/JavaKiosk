@@ -1,6 +1,6 @@
-package lv4andlv5.manager;
+package lv4lv5andchallenge1challenge2.manager;
 
-import lv4andlv5.food.Food;
+import lv4lv5andchallenge1challenge2.food.Food;
 
 import java.util.Arrays;
 import java.util.HashMap;

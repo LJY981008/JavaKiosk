@@ -1,4 +1,4 @@
-package lv4andlv5.enums;
+package lv4lv5andchallenge1challenge2.enums;
 
 /**
  * 할인율 관리자

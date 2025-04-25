@@ -1,8 +1,8 @@
-package lv4andlv5;
+package lv4lv5andchallenge1challenge2;
 
-import lv4andlv5.manager.CartManager;
-import lv4andlv5.manager.FoodManager;
-import lv4andlv5.screen.*;
+import lv4lv5andchallenge1challenge2.manager.CartManager;
+import lv4lv5andchallenge1challenge2.manager.FoodManager;
+import lv4lv5andchallenge1challenge2.screen.*;
 
 /**
  * 키오스크 입출력 클래스

@@ -1,8 +1,8 @@
-package lv4andlv5.screen;
+package lv4lv5andchallenge1challenge2.screen;
 
-import lv4andlv5.food.Food;
-import lv4andlv5.manager.CartManager;
-import lv4andlv5.manager.FoodManager;
+import lv4lv5andchallenge1challenge2.food.Food;
+import lv4lv5andchallenge1challenge2.manager.CartManager;
+import lv4lv5andchallenge1challenge2.manager.FoodManager;
 
 import java.util.InputMismatchException;
 import java.util.Optional;

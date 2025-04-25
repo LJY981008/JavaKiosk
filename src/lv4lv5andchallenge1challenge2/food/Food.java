@@ -1,4 +1,4 @@
-package lv4andlv5.food;
+package lv4lv5andchallenge1challenge2.food;
 
 /**
  * 음식들이 구현해야하는 인터페이스

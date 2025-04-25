@@ -1,4 +1,4 @@
-package lv4andlv5.food;
+package lv4lv5andchallenge1challenge2.food;
 
 /**
  * 모든 음식 데이터 구현 기본값
