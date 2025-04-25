@@ -1,6 +1,6 @@
 ## 구현 단계**
 
-1. **필수**
+1. **필수**<br/>
 Lv1 햄버거 입출력하기 package : lv1<br/>
 Lv2 클래스 분리하기 package : lv2<br/>
 Lv3 Kiosk클래스 생성해 구조적으로 만들기 package : lv3<br/>
@@ -8,7 +8,7 @@ Lv4 음식 데이터의 상위 개념을 작성해 다형성 고려하기 packge
 Lv5 캡슐화하기 package :  lv4lv5andchallenge1challenge2<br/>
 ps : Lv4~5 통합하여 작성<br/>
 
-2. **도전**
+2. **도전**<br/>
 Lv1 클래스의 책임 분산하기 package : lv4lv5andchallenge1challenge2<br/>
 Lv2 고급기능을 이용해 가독성 높이기 package : lv4lv5andchallenge1challenge2<br/>
 ps : Lv4~5에 추가 작성<br/>
