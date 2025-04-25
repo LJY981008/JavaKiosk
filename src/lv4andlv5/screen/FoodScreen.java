@@ -30,7 +30,7 @@ public class FoodScreen implements ScreenEvent{
         for (Food food : foodManager.getFoodOfCategory(categoryIndex)) {
             food.printMyInfo();
         }
-        input();
+        inputEvent();
     }
 
     /**
@@ -38,7 +38,7 @@ public class FoodScreen implements ScreenEvent{
      * @return 0
      */
     @Override
-    public int input() {
+    public int inputEvent() {
         Scanner sc = new Scanner(System.in);
         try {
             String input = sc.nextLine();

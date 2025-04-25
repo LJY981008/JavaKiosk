@@ -21,7 +21,7 @@ public class CancelScreen implements ScreenEvent {
         System.out.println("[ Orders ]");
         cartManager.printCart();
         System.out.println("0. 돌아가기");
-        input();
+        inputEvent();
     }
 
     /**
@@ -29,7 +29,7 @@ public class CancelScreen implements ScreenEvent {
      * @return 0
      */
     @Override
-    public int input() {
+    public int inputEvent() {
         Scanner sc = new Scanner(System.in);
         String input = sc.nextLine();
         try {

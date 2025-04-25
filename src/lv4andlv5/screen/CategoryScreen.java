@@ -11,7 +11,7 @@ import java.util.Scanner;
 public class CategoryScreen implements ScreenEvent{
     private final FoodManager foodManager;
     private final CartManager cartManager;
-    private int screenIndex = 1;
+    private int screenListCount = 1;    // 화면에 표시되는 카테고리의 개수
     public CategoryScreen(FoodManager foodManager, CartManager cartManager){
             this.foodManager = foodManager;
             this.cartManager = cartManager;
@@ -23,15 +23,15 @@ public class CategoryScreen implements ScreenEvent{
     @Override
     public void printScreen() {
         String[] categoryArray = foodManager.getCategoryToArray();
-        this.screenIndex = 1;
+        this.screenListCount = 1;
         System.out.println("[ Main Menu ]");
         for (String category : categoryArray) {
             System.out.println(category);
-            this.screenIndex++;
+            this.screenListCount++;
         }
         System.out.println("[ ORDER MENU ]");
-        System.out.println(screenIndex++ + ". Orders\t| 장바구니를 확인 후 주문합니다.");
-        System.out.println(screenIndex + ". Cancel\t| 진행중인 주문을 취소합니다.");
+        System.out.println(screenListCount++ + ". Orders\t| 장바구니를 확인 후 주문합니다.");
+        System.out.println(screenListCount + ". Cancel\t| 진행중인 주문을 취소합니다.");
         System.out.println("0. 종료");
     }
 
@@ -40,13 +40,13 @@ public class CategoryScreen implements ScreenEvent{
      * @return 선택한 카테고리의 index
      */
     @Override
-    public int input() {
+    public int inputEvent() {
         Scanner sc = new Scanner(System.in);
         int index;
         try {
             String input = sc.nextLine();
             index = Integer.parseInt(input);
-            if (index < 0 || screenIndex < index) throw new InputMismatchException();
+            if (index < 0 || screenListCount < index) throw new InputMismatchException();
         } catch (InputMismatchException e) {
             System.out.println("잘못된 입력입니다.");
             return 0;
@@ -63,8 +63,8 @@ public class CategoryScreen implements ScreenEvent{
      * @return 선택한 카테고리의 화면 객체
      */
     public ScreenEvent selectCategory(int categoryIndex) {
-        int orderBtn = this.screenIndex - 1;
-        int cancelBtn = this.screenIndex;
+        int orderBtn = this.screenListCount - 1;
+        int cancelBtn = this.screenListCount;
         try {
             if (orderBtn == categoryIndex) {
                 if (cartManager.isEmpty()) throw new InputMismatchException();

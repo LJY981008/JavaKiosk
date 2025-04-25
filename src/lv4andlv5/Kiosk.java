@@ -24,7 +24,7 @@ public class Kiosk {
         while (true) {
             categoryScreen.printScreen();
 
-            int categoryIndex = categoryScreen.input();
+            int categoryIndex = categoryScreen.inputEvent();
             if (categoryIndex == 0) {
                 break;
             } else {

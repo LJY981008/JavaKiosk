@@ -25,7 +25,7 @@ public class OrderScreen implements ScreenEvent {
         System.out.println("[ Total ]");
         System.out.println("W " + cartManager.getTotalPrice());
         System.out.println("1. 주문\t2. 메뉴판");
-        input();
+        inputEvent();
     }
 
     /**
@@ -33,7 +33,7 @@ public class OrderScreen implements ScreenEvent {
      * @return 0
      */
     @Override
-    public int input() {
+    public int inputEvent() {
         Scanner sc = new Scanner(System.in);
         boolean flag = sc.nextLine().equals("1");
         if (flag) {

@@ -13,7 +13,7 @@ import java.util.Optional;
 public class CartManager {
     private final Map<Food, Integer> myCart;
     private double totalPrice = 0.0;
-    private int index = 1;
+    private int selectFoodIndex = 1;
     public CartManager(){
         myCart = new HashMap<>();
     }
@@ -25,8 +25,8 @@ public class CartManager {
     public void addFood(Food selectFood){
         System.out.println("---------------------------------------------------------");
         if(!myCart.containsKey(selectFood)){
-            selectFood.setCartIndex(index);
-            index++;
+            selectFood.setCartIndex(selectFoodIndex);
+            selectFoodIndex++;
         }
         myCart.merge(selectFood, 1, Integer::sum);
 
@@ -50,9 +50,9 @@ public class CartManager {
         if(myCart.get(food.get()) <= 0) myCart.remove(food.get());
 
         //음식이 삭제되면 index 재배치
-        this.index = 1;
+        this.selectFoodIndex = 1;
         for(Food key : myCart.keySet()){
-            key.setCartIndex(this.index++);
+            key.setCartIndex(this.selectFoodIndex++);
         }
         System.out.println("---------------------------------------------------------");
     }
