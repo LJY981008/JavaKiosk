@@ -7,8 +7,8 @@ import lv4andlv5.manager.FoodManager;
 public class MainLv5 {
     public static void main(String[] args) {
         CookingManager cookingManager = new CookingManager();
-        CartManager cartManager = new CartManager();
         FoodManager foodManager = new FoodManager(cookingManager.cooking());
+        CartManager cartManager = new CartManager();
         Kiosk kiosk = new Kiosk(foodManager, cartManager);
         kiosk.start();
     }
