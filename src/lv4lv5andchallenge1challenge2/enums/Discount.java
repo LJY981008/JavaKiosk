@@ -9,7 +9,7 @@ public enum Discount {
         public double getDiscount(double totalPayment) {
             return totalPayment * 0.9;
         }
-    },SOLDIER {
+    }, SOLDIER {
         @Override
         public double getDiscount(double totalPayment) {
             return totalPayment * 0.95;
@@ -25,6 +25,7 @@ public enum Discount {
             return totalPayment;
         }
     };
+
     // 각각 할인율의 연산 메서드
     public abstract double getDiscount(double totalPayment);
 }

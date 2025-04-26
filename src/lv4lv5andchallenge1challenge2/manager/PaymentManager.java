@@ -1,53 +1,22 @@
-package lv4lv5andchallenge1challenge2.screen;
+package lv4lv5andchallenge1challenge2.manager;
 
 import lv4lv5andchallenge1challenge2.enums.Discount;
-import lv4lv5andchallenge1challenge2.manager.CartManager;
+
 import java.util.Scanner;
 
-/**
- * 주문하기 화면
- */
-public class OrderScreen implements ScreenEvent {
+public class PaymentManager {
     private final CartManager cartManager;
 
-    public OrderScreen(CartManager cartManager) {
+    /**
+     * 생성자
+     * @param cartManager 쇼핑카트 관리자
+     */
+    public PaymentManager(CartManager cartManager) {
         this.cartManager = cartManager;
     }
 
     /**
-     * 주문하기위해 선택한 음식들
-     */
-    @Override
-    public void printScreen() {
-        if (cartManager.isEmpty()) return;
-        System.out.println("[ Orders ]");
-        cartManager.printCart();
-        System.out.println("[ Total ]");
-        System.out.println("W " + cartManager.getTotalPrice());
-        System.out.println("1. 주문\t2. 메뉴판");
-        inputEvent();
-    }
-
-    /**
-     * 주문하기 화면에서 입력
-     * @return 0
-     */
-    @Override
-    public int inputEvent() {
-        Scanner sc = new Scanner(System.in);
-        boolean flag = sc.nextLine().equals("1");
-        if (flag) {
-            double totalPrice = discount(sc);
-            System.out.println("주문이 완료되었습니다. 금액은 W " + String.format("%.2f", totalPrice) + " 입니다.");
-            cartManager.resetCart();
-        } else {
-            System.out.println("메뉴판으로 돌아갑니다.");
-        }
-        return 0;
-    }
-
-    /**
-     * 할인율 적용
+     * 결제 할인율 적용
      * @param sc 스캐너
      * @return 할인적용 후의 가격
      */

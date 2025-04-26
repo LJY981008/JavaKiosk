@@ -1,20 +1,32 @@
 package lv4lv5andchallenge1challenge2.screen;
 
 import lv4lv5andchallenge1challenge2.manager.CartManager;
-import lv4lv5andchallenge1challenge2.manager.FoodManager;
+import lv4lv5andchallenge1challenge2.manager.MenuManager;
+import lv4lv5andchallenge1challenge2.screen.interfaces.NeedReturnScreen;
+import lv4lv5andchallenge1challenge2.screen.interfaces.ScreenEvent;
+
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
 /**
  * 카테고리 화면
  */
-public class CategoryScreen implements ScreenEvent{
-    private final FoodManager foodManager;
+public class CategoryScreen implements NeedReturnScreen {
+    private final MenuManager menuManager;
     private final CartManager cartManager;
+    private final Scanner sc;
     private int screenListCount = 1;    // 화면에 표시되는 카테고리의 개수
-    public CategoryScreen(FoodManager foodManager, CartManager cartManager){
-            this.foodManager = foodManager;
-            this.cartManager = cartManager;
+
+    /**
+     * 생성자
+     * @param menuManager 음식전체 관리자
+     * @param cartManager 쇼핑카트 관리자
+     * @param sc 입력스캐너
+     */
+    public CategoryScreen(MenuManager menuManager, CartManager cartManager, Scanner sc) {
+        this.menuManager = menuManager;
+        this.cartManager = cartManager;
+        this.sc = sc;
     }
 
     /**
@@ -22,7 +34,7 @@ public class CategoryScreen implements ScreenEvent{
      */
     @Override
     public void printScreen() {
-        String[] categoryArray = foodManager.getCategoryToArray();
+        String[] categoryArray = menuManager.getCategoryToArray();
         this.screenListCount = 1;
         System.out.println("[ Main Menu ]");
         for (String category : categoryArray) {
@@ -40,8 +52,7 @@ public class CategoryScreen implements ScreenEvent{
      * @return 선택한 카테고리의 index
      */
     @Override
-    public int inputEvent() {
-        Scanner sc = new Scanner(System.in);
+    public int selectedScreen() {
         int index;
         try {
             String input = sc.nextLine();
@@ -62,22 +73,21 @@ public class CategoryScreen implements ScreenEvent{
      * @param categoryIndex 선택한 카테고리의 index
      * @return 선택한 카테고리의 화면 객체
      */
-    public ScreenEvent selectCategory(int categoryIndex) {
+    public ScreenEvent getSelectCategory(int categoryIndex) {
         int orderBtn = this.screenListCount - 1;
         int cancelBtn = this.screenListCount;
         try {
+            if (cartManager.isEmpty()) throw new InputMismatchException();
             if (orderBtn == categoryIndex) {
-                if (cartManager.isEmpty()) throw new InputMismatchException();
                 System.out.println("아래와 같이 주문하시겠습니까?");
-                return new OrderScreen(cartManager);
+                return new CartOrderScreen(cartManager, sc);
             } else if (cancelBtn == categoryIndex) {
-                if (cartManager.isEmpty()) throw new InputMismatchException();
-                return new CancelScreen(cartManager);
+                return new CancelScreen(cartManager, sc);
             }
         } catch (InputMismatchException e) {
             System.out.println("!!!!장바구니에 담긴 음식이 없습니다.!!!!");
-            return new CategoryScreen(foodManager, cartManager);
+            return this;
         }
-        return new FoodScreen(foodManager, cartManager, categoryIndex);
+        return new FoodScreen(menuManager, cartManager, categoryIndex, sc);
     }
 }

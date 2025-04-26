@@ -1,8 +1,9 @@
 package lv4lv5andchallenge1challenge2.screen;
 
-import lv4lv5andchallenge1challenge2.food.Food;
+import lv4lv5andchallenge1challenge2.model.Food;
 import lv4lv5andchallenge1challenge2.manager.CartManager;
-import lv4lv5andchallenge1challenge2.manager.FoodManager;
+import lv4lv5andchallenge1challenge2.manager.MenuManager;
+import lv4lv5andchallenge1challenge2.screen.interfaces.NoneReturnScreen;
 
 import java.util.InputMismatchException;
 import java.util.Optional;
@@ -11,14 +12,24 @@ import java.util.Scanner;
 /**
  * 음식 리스트 화면
  */
-public class FoodScreen implements ScreenEvent{
-    private final FoodManager foodManager;
+public class FoodScreen implements NoneReturnScreen {
+    private final MenuManager menuManager;
     private final CartManager cartManager;
+    private final Scanner sc;
     private final int categoryIndex;
-    public FoodScreen(FoodManager foodManager, CartManager cartManager , int categoryIndex){
-        this.foodManager = foodManager;
+
+    /**
+     * 생성자
+     * @param menuManager 음식전체 관리자
+     * @param cartManager 장바구니 관리자
+     * @param categoryIndex 선택한 카테고리의 index
+     * @param sc 입력스캐너
+     */
+    public FoodScreen(MenuManager menuManager, CartManager cartManager, int categoryIndex, Scanner sc) {
+        this.menuManager = menuManager;
         this.cartManager = cartManager;
         this.categoryIndex = categoryIndex;
+        this.sc = sc;
     }
 
     /**
@@ -26,30 +37,28 @@ public class FoodScreen implements ScreenEvent{
      */
     @Override
     public void printScreen() {
-        if(this.categoryIndex < 1) return;
-        for (Food food : foodManager.getFoodOfCategory(categoryIndex)) {
+        if (this.categoryIndex < 1) return;
+        for (Food food : menuManager.getFoodOfCategory(categoryIndex)) {
             food.printMyInfo();
         }
-        inputEvent();
+        selectedScreen();
     }
 
     /**
      * 음식 선택
-     * @return 0
      */
     @Override
-    public int inputEvent() {
-        Scanner sc = new Scanner(System.in);
+    public void selectedScreen() {
         try {
             String input = sc.nextLine();
             int index = Integer.parseInt(input);
 
             if (index == 0) {
                 System.out.println("이전화면으로 돌아갑니다.");
-            } else if (index < 0 || foodManager.getFoodsSize() < index) {
+            } else if (index < 0 || menuManager.getFoodsSize() < index) {
                 throw new InputMismatchException();
             } else {
-                Optional<Food> selectFood = foodManager.selectFood(index, categoryIndex);
+                Optional<Food> selectFood = menuManager.selectFood(index, categoryIndex);
 
                 if (selectFood.isEmpty()) throw new InputMismatchException();
                 System.out.println(selectFood.get().getName() + "을 장바구니에 추가하시겠습니까?");
@@ -69,6 +78,5 @@ public class FoodScreen implements ScreenEvent{
         } catch (Exception e) {
             System.out.println("알수없는 오류 발생");
         }
-        return 0;
     }
 }
