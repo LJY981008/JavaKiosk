@@ -1,6 +1,6 @@
 package lv4lv5andchallenge1challenge2.manager;
 
-import lv4lv5andchallenge1challenge2.model.Food;
+import lv4lv5andchallenge1challenge2.fooditem.foodmodel.Food;
 import lv4lv5andchallenge1challenge2.fooditem.DrinkItem;
 import lv4lv5andchallenge1challenge2.fooditem.MainItem;
 import lv4lv5andchallenge1challenge2.fooditem.SideItem;

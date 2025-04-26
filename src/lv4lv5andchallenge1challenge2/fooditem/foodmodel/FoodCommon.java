@@ -1,4 +1,4 @@
-package lv4lv5andchallenge1challenge2.model;
+package lv4lv5andchallenge1challenge2.fooditem.foodmodel;
 
 /**
  * 모든 음식 데이터 구현 기본값

@@ -1,6 +1,6 @@
 package lv4lv5andchallenge1challenge2.fooditem;
 
-import lv4lv5andchallenge1challenge2.model.FoodCommon;
+import lv4lv5andchallenge1challenge2.fooditem.foodmodel.FoodCommon;
 
 /**
  * 메인음식 메뉴 데이터
