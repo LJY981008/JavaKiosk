@@ -1,4 +1,4 @@
-package lv4lv5andchallenge1challenge2.screen.interfaces;
+package lv4lv5andchallenge1challenge2.screen.screenmodel;
 
 /**
  * 화면 이벤트 최상위 인터페이스

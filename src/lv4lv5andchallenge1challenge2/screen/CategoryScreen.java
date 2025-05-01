@@ -2,8 +2,8 @@ package lv4lv5andchallenge1challenge2.screen;
 
 import lv4lv5andchallenge1challenge2.manager.CartManager;
 import lv4lv5andchallenge1challenge2.manager.MenuManager;
-import lv4lv5andchallenge1challenge2.screen.interfaces.NeedReturnScreen;
-import lv4lv5andchallenge1challenge2.screen.interfaces.ScreenEvent;
+import lv4lv5andchallenge1challenge2.screen.screenmodel.NeedReturnScreen;
+import lv4lv5andchallenge1challenge2.screen.screenmodel.ScreenEvent;
 
 import java.util.InputMismatchException;
 import java.util.Scanner;

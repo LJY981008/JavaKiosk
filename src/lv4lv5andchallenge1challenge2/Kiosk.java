@@ -3,7 +3,7 @@ package lv4lv5andchallenge1challenge2;
 import lv4lv5andchallenge1challenge2.manager.CartManager;
 import lv4lv5andchallenge1challenge2.manager.MenuManager;
 import lv4lv5andchallenge1challenge2.screen.*;
-import lv4lv5andchallenge1challenge2.screen.interfaces.ScreenEvent;
+import lv4lv5andchallenge1challenge2.screen.screenmodel.ScreenEvent;
 
 import java.util.Scanner;
 

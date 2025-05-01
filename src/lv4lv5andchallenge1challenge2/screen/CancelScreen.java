@@ -1,7 +1,7 @@
 package lv4lv5andchallenge1challenge2.screen;
 
 import lv4lv5andchallenge1challenge2.manager.CartManager;
-import lv4lv5andchallenge1challenge2.screen.interfaces.NoneReturnScreen;
+import lv4lv5andchallenge1challenge2.screen.screenmodel.NoneReturnScreen;
 
 import java.util.Scanner;
 
